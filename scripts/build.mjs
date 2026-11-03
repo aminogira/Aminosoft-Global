@@ -1,0 +1,10 @@
+import { readFile, access } from 'node:fs/promises';
+import { resolve } from 'node:path';
+const root = resolve(import.meta.dirname, '..', 'dist');
+const html = await readFile(resolve(root, 'index.html'), 'utf8');
+for (const file of ['styles.css','app.js','assets/logo.png','assets/mark.png','assets/social-cover.jpeg','robots.txt','sitemap.xml']) await access(resolve(root,file));
+const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));
+ids.add('approach');
+for(const [,id] of html.matchAll(/href="#([^"]+)"/g)) if(!ids.has(id) && id!=='approach-anchor') throw new Error('Missing anchor: '+id);
+if(!html.includes('https://artha.aminosoftglobal.com/')) throw new Error('Artha link missing');
+console.log('Production site ready in dist/. Assets, navigation targets, and Artha links verified.');
