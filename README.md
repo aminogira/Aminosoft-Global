@@ -26,4 +26,6 @@ Read-only inspection of the adjacent Artha source confirmed:
 
 The Artha project was inspected only; no source or deployment changes were made to it. Recheck capabilities against Artha before changing advertised features. Do not advertise multi-branch features until released and available.
 
-Canonical URLs, sitemap, robots, and absolute social-image URLs target https://www.aminosoftglobal.com/. Update them if the production domain changes.
+Canonical URLs, sitemap, robots, and absolute social-image URLs target https://aminosoftglobal.com/. Update them if the production domain changes.
+
+OVH production preparation and approval gates: [deployment runbook](docs/deployment/aminosoftglobal-production-deployment.md).
